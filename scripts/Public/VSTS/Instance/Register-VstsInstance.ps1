@@ -14,9 +14,13 @@ function Register-VstsInstance {
 		[string]$Token,
 
 		[Parameter(Position=2)]
-		[Uri]$Uri="https://$Instance.visualstudio.com/DefaultCollection"
+		[Uri]$Uri="https://$Instance.visualstudio.com/DefaultCollection/"
 	)
-	$path = Resolve-Path -Path "~\AppData\Roaming\PoshVSTS\Instances"
+	if (-not $uri.ToString().EndsWith("/")) {
+		$uri = [Uri]("{0}/" -f $uri)
+	}
+
+	$path = Resolve-Path -Path "~\AppData\Roaming\VSTS\Instances"
     MakeDirIfNotExists $path | Out-Null
     
     switch($PSCmdlet.ParameterSetName) {
@@ -33,6 +37,5 @@ function Register-VstsInstance {
 		Name = $Instance
 		Uri = $Uri
         Authorization =  ConvertFrom-SecureString -SecureString $Authorization
-    } | ConvertTo-Json | Out-File -FilePath "$path\$Instance.json"
-    #} | Export-CliXml -Path "$path\$Instance.xml"
+    } | Export-CliXml -Path "$path\$Instance.xml"
 }

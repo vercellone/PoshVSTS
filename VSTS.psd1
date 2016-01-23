@@ -1,7 +1,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = 'PoshVsts.psm1'
+RootModule = 'VSTS.psm1'
 
 # Version number of this module.
 ModuleVersion = '1.0.0.0'
@@ -58,7 +58,7 @@ RequiredAssemblies = @()
 # NestedModules = @()
 
 # Functions to export from this module
-#FunctionsToExport = @('Get-VstsCredentials','Remove-VstsCredentials','Set-VstsCredentials','Get-VstsBuildTemplate','Set-VstsBuildTemplate','Get-VstsArea','Get-VstsOption','Get-VstsProject','New-VstsProject','Remove-VstsProject','Rename-VstsProject','Set-VstsProject','Get-VstsProjectTeam','Get-VstsProjectTeamMember','Get-VstsWorkItem','Invoke-VstsGetAllOperation','Invoke-VstsGetOperation','Invoke-VstsOperation')
+# (gci ~\Source\Repos\PoshVSTS\scripts\*.ps1 -Recurse | ? Name -like *-Vsts* | select -exp Name | % { "'{0}'" -f ($_ -replace '.ps1','') }  ) -join ',' | clip
 FunctionsToExport = @('Get-VstsBuildTemplate','Set-VstsBuildTemplate','Get-VstsInstance','Register-VstsInstance','Unregister-VstsInstance','Get-VstsArea','Get-VstsOption','Get-VstsProject','New-VstsProject','Remove-VstsProject','Rename-VstsProject','Set-VstsProject','Get-VstsProjectTeam','Get-VstsProjectTeamMember','Get-VstsWorkItem','Invoke-VstsGetAllOperation','Invoke-VstsGetOperation','Invoke-VstsOperation')
 
 # Cmdlets to export from this module
@@ -76,7 +76,7 @@ AliasesToExport = '*'
 # List of all files packaged with this module
 # FileList = @()
 # List of all files packaged with this module 
-#FileList = @('PoshVSTS.psd1', 'PoshVSTS.psm1', 'BuildUrl.ps1','DecryptSecureString.ps1','GetAuth.ps1','MakeDirIfNotExists.ps1','RedeemCredentials.ps1','StoreCredentials.ps1','Invoke-VstsGetAllOperation.ps1','Invoke-VstsGetOperation.ps1','Invoke-VstsOperation.ps1','Get-VstsCredentials.ps1','Remove-VstsCredentials.ps1','Set-VstsCredentials.ps1','Get-VstsProject.ps1')
+#FileList = @('VSTS.psd1', 'VSTS.psm1', 'BuildUrl.ps1','DecryptSecureString.ps1','GetAuth.ps1','MakeDirIfNotExists.ps1','RedeemCredentials.ps1','StoreCredentials.ps1','Invoke-VstsGetAllOperation.ps1','Invoke-VstsGetOperation.ps1','Invoke-VstsOperation.ps1','Get-VstsCredentials.ps1','Remove-VstsCredentials.ps1','Set-VstsCredentials.ps1','Get-VstsProject.ps1')
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess
 # PrivateData = ''

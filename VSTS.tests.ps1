@@ -1,15 +1,15 @@
 $scriptroot = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 
-Import-Module (Join-Path $scriptroot 'PoshVSTS\PoshVSTS.psm1') -Force
+Import-Module (Join-Path $scriptroot 'PoshVSTS\VSTS.psm1') -Force
 
 if ($null -eq (Get-VstsInstance -Name dyneia)) {
-	$token = [Environment]::GetEnvironmentVariable("PoshVSTSToken",'Process')
+	$token = [Environment]::GetEnvironmentVariable("VSTSToken",'Process')
 	if ($null -ne $token) {
 		Register-VstsInstance -Instance "dyneia" -token $token
 	}
 }
 Describe "BuildTemplate" {
-	InModuleScope PoshVSTS {
+	InModuleScope VSTS {
 		$Instance = "dyneia"
 		$Projects = @()
 		'Automation','DataIntegration','DSI' | % { $Projects += @{Id = $_} }
@@ -40,7 +40,7 @@ Describe "BuildTemplate" {
 }
 
 Describe "Option" {
-	InModuleScope PoshVSTS {
+	InModuleScope VSTS {
 		$Instance = "dyneia"
 		Context "Get" {
 			It "Get Areas" {
@@ -54,7 +54,7 @@ Describe "Option" {
 }
 
 Describe "Project" {
-	InModuleScope PoshVSTS {
+	InModuleScope VSTS {
 		$Instance = "dyneia"
 		$Projects = @()
 		'Automation','DataIntegration','DSI' | % { $Projects += @{Id = $_} }
@@ -78,7 +78,7 @@ Describe "Project" {
 }
 
 Describe "Team" {
-	InModuleScope PoshVSTS {
+	InModuleScope VSTS {
 		$Instance = "dyneia"
 		$Projects = @()
 		'Automation','DataIntegration','DSI' | % { $Projects += @{Id = $_} }
@@ -110,7 +110,7 @@ Describe "Team" {
 }
 
 Describe "WorkItem" {
-	InModuleScope PoshVSTS {
+	InModuleScope VSTS {
 		$Instance = "dyneia"
 		$WorkItems = @()
 		'4443','4449','4163' | % { $WorkItems += @{Id = $_} }

@@ -7,13 +7,12 @@ function Unregister-VstsInstance{
         $InputObject
 	)
 	begin {
-		$path = Resolve-Path -Path "~\AppData\Roaming\PoshVSTS\Instances"
+		$path = Resolve-Path -Path "~\AppData\Roaming\VSTS\Instances"
 	}
 	process {
 		foreach ($item in $InputObject) {
 			if ($item -is [String]) {
-				#Get-Item -Path "$path\$item.xml" -ErrorAction SilentlyContinue | Remove-Item 
-				Get-Item -Path "$path\$item.json" -ErrorAction SilentlyContinue | Remove-Item 
+				Get-Item -Path "$path\$item.xml" -ErrorAction SilentlyContinue | Remove-Item 
 			} elseif ($item.Path) {
 				Get-Item -Path $item.Path -ErrorAction SilentlyContinue | Remove-Item
 			}
