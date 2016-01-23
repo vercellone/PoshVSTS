@@ -13,13 +13,13 @@ build: false
 
 test_script:
     - ps: |
-        $testResultsFile = ".\TestsResults.xml"
+        $testResultsFile = '.\TestsResults.xml'
         
         # run tests
         $res = Invoke-Pester -OutputFormat NUnitXml -OutputFile $testResultsFile -PassThru
         
         # upload results to AppVeyor
-        #(New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path $testResultsFile))
+        (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path $testResultsFile))
         
         # if failures, quit to prevent publish
         if ($res.FailedCount -gt 0) { 
