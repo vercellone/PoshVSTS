@@ -9,7 +9,7 @@ function Get-VstsProjectTeam {
         [Alias("ProjectName")]
         [string]$Project,
 
-	[Alias("TeamName")]
+    [Alias("TeamName")]
         [Parameter(Position=2,ParameterSetName="Name")]
         [string]$Name = "*",
 
