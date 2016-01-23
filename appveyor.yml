@@ -7,7 +7,7 @@ version: 1.0.{build}
 
 install: 
     - cinst -y pester
-	- git clone https://github.com/PowerShell/DscResource.Tests
+    - git clone https://github.com/PowerShell/DscResource.Tests
 
 build: false
 
