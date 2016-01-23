@@ -19,9 +19,7 @@ function Register-VstsInstance {
 	if (-not $uri.ToString().EndsWith("/")) {
 		$uri = [Uri]("{0}/" -f $uri)
 	}
-
-	$path = Resolve-Path -Path "~\AppData\Roaming\VSTS\Instances"
-    MakeDirIfNotExists $path | Out-Null
+    $path = MakeDirIfNotExists "~\AppData\Roaming\VSTS\Instances"
     
     switch($PSCmdlet.ParameterSetName) {
         Credential {

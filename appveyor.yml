@@ -1,6 +1,6 @@
 # https://ci.appveyor.com/tools/encrypt
 environment:
-    VSTSToken_dyneia:
+    VSTSToken:
         secure: Rw5H8FwdDIZDs62uO7n5nMKrlsg8m9SQjsrvdVEkN1KYGWHM95UCc34f3y89rAo2oAqQ2lMgdqOM/dtPbvsIWw==
 
 os: unstable
