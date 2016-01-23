@@ -7,5 +7,5 @@ function Get-VstsWorkItem
         [string]$Id
     )
     
-    Invoke-VstsGetOperation $Instance "_apis/wit/workItems/$Id" "2.1"
+    Invoke-VstsGetOperation -Instance $Instance -Path "_apis/wit/workItems/$Id" -ApiVersion "2.1"
 }

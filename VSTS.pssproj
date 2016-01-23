@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>6CAFC0C6-A428-4d30-A9F9-700E829FEA51</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MyApplication</RootNamespace>
+    <AssemblyName>MyApplication</AssemblyName>
+    <Name>VSTS</Name>
+    <Author />
+    <CompanyName />
+    <Copyright>2016</Copyright>
+    <Description />
+    <Guid>270c7628-cff2-42af-a278-470bf541aa71</Guid>
+    <ClrVersion />
+    <PowerShellHostVersion />
+    <PowerShellVersion />
+    <ProcessorArchitecture />
+    <RequiredModules />
+    <VariablesToExport />
+    <CmdletsToExport>Get-VstsProject</CmdletsToExport>
+    <AliasesToExport />
+    <ProjectHome />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="scripts\" />
+    <Folder Include="scripts\Public\" />
+    <Folder Include="scripts\Private\" />
+    <Folder Include="scripts\Public\VSTS\" />
+    <Folder Include="scripts\Public\VSTS\BuildTemplate\" />
+    <Folder Include="scripts\Public\VSTS\Instance\" />
+    <Folder Include="scripts\Public\VSTS\Option\" />
+    <Folder Include="scripts\Public\VSTS\Project\" />
+    <Folder Include="scripts\Public\VSTS\Team\" />
+    <Folder Include="scripts\Public\VSTS\WorkItem\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="VSTS.psd1" />
+    <Compile Include="VSTS.psm1" />
+    <Compile Include="VSTS.tests.ps1" />
+    <Compile Include="scripts\Public\VSTS\Instance\Get-VstsInstance.ps1" />
+    <Compile Include="scripts\Public\VSTS\Instance\Register-VstsInstance.ps1" />
+    <Compile Include="scripts\Public\VSTS\Instance\Unregister-VstsInstance.ps1" />
+    <Compile Include="scripts\Private\MakeDirIfNotExists.ps1" />
+    <Compile Include="scripts\Private\DecryptSecureString.ps1" />
+    <Compile Include="scripts\Public\VSTS\BuildTemplate\Get-VstsBuildTemplate.ps1" />
+    <Compile Include="scripts\Public\VSTS\BuildTemplate\Set-VstsBuildTemplate.ps1" />
+    <Compile Include="scripts\Public\VSTS\Invoke-VstsGetAllOperation.ps1" />
+    <Compile Include="scripts\Public\VSTS\Invoke-VstsGetOperation.ps1" />
+    <Compile Include="scripts\Public\VSTS\Invoke-VstsOperation.ps1" />
+    <Compile Include="scripts\Public\VSTS\Option\Get-VstsArea.ps1" />
+    <Compile Include="scripts\Public\VSTS\Option\Get-VstsOption.ps1" />
+    <Compile Include="scripts\Public\VSTS\Project\Get-VstsProject.ps1" />
+    <Compile Include="scripts\Public\VSTS\Project\New-VstsProject.ps1" />
+    <Compile Include="scripts\Public\VSTS\Project\Remove-VstsProject.ps1" />
+    <Compile Include="scripts\Public\VSTS\Project\Rename-VstsProject.ps1" />
+    <Compile Include="scripts\Public\VSTS\Project\Set-VstsProject.ps1" />
+    <Compile Include="scripts\Public\VSTS\Team\Get-VstsProjectTeam.ps1" />
+    <Compile Include="scripts\Public\VSTS\Team\Get-VstsProjectTeamMember.ps1" />
+    <Compile Include="scripts\Public\VSTS\WorkItem\Get-VstsWorkItem.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appveyor.yml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="Build" />
+</Project>
