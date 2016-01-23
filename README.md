@@ -1,11 +1,13 @@
-# PoshVSTS
+[![Build status](https://ci.appveyor.com/api/projects/status/u0h7op4yd8yud6cj?svg=true)](https://ci.appveyor.com/project/vercellone/poshvsts)
+
+# VSTS
 A PowerShell module for interacting with Visual Studio Team Services
 
-## Credential Store
+## Build Definition Template
 
-[Todo]
+## Option
 
-## Projects
+## Project
 
 To get all projects in a VSTS instance:
 
@@ -27,8 +29,7 @@ url         : https://andrewgaspar.visualstudio.com/DefaultCollection/_apis/proj
 state       : wellFormed
 revision    : 358049357
 ```
-
-## Teams
+## Team
 
 ```powershell
 GIT F:\Projects\PoshVSO [master ≡]> Get-VstsProjectTeam andrewgaspar.visualstudio.com "Blog"
@@ -40,3 +41,5 @@ url         : https://andrewgaspar.visualstudio.com/DefaultCollection/_apis/proj
 description : The default project team.
 identityUrl : https://andrewgaspar.vssps.visualstudio.com/_apis/Identities/8ff104e0-9844-4ead-8ca5-d8251e1d79c1
 ```
+
+## WorkItem
