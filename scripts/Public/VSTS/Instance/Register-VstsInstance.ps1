@@ -34,6 +34,6 @@ function Register-VstsInstance {
     [pscustomobject]@{
         Name = $Instance
         Uri = $Uri
-        Authorization =  ConvertFrom-SecureString -SecureString $Authorization
+        Authorization = ConvertFrom-SecureString -SecureString $Authorization
     } | Export-CliXml -Path "$path\$Instance.xml"
 }

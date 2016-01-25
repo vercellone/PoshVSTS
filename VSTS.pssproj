@@ -53,6 +53,11 @@
     <Folder Include="scripts\Public\VSTS\WorkItem\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="README.md" />
+    <Compile Include="scripts\Public\VSTS\BuildTemplate\Remove-VstsBuildTemplate.ps1" />
+    <Compile Include="scripts\Public\VSTS\WorkItem\New-VstsWorkItem.ps1" />
+    <Compile Include="scripts\Public\VSTS\WorkItem\Remove-VstsWorkItem.ps1" />
+    <Compile Include="scripts\Public\VSTS\WorkItem\Set-VstsWorkItem.ps1" />
     <Compile Include="VSTS.psd1" />
     <Compile Include="VSTS.psm1" />
     <Compile Include="VSTS.tests.ps1" />

@@ -1,22 +1,19 @@
 function Set-VstsBuildTemplate {
      Param(
-            [Parameter(Position=0, Mandatory=$True)]
-            [string]$Instance,
+        [Parameter(Position=0, Mandatory=$True)]
+        [string]$Instance,
 
-            [Parameter(Mandatory=$true,ValueFromPipeline=$true,ValueFromPipelineByPropertyName=$true)]
-            [Alias('Template')]
-            [PSObject]
-            $InputObject,
+        [Parameter(Mandatory=$true,ValueFromPipeline=$true,ValueFromPipelineByPropertyName=$true)]
+        [Alias('Template')]
+        [PSObject]$InputObject,
 
-            [Alias("Name")]
-            [Alias("TemplateName")]
+        [Alias("Name")]
+        [Alias("TemplateName")]
         [Parameter(ValueFromPipelineByPropertyName=$true)]
-        [string]
-            $Id,
+        [string]$Id,
 
         [Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-        [string]
-            $Project
+        [string]$Project
     )
     process {
         foreach($template in $InputObject) {

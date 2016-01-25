@@ -4,15 +4,15 @@ function Invoke-VstsOperation {
         [string]$Path,
         [string]$ApiVersion,
         [Microsoft.PowerShell.Commands.WebRequestMethod]$Method,
-        [hashtable]$Parameters = @{},
-        [hashtable]$Body = [hashtable]@{} 
+        [hashtable]$Parameters=@{},
+        $Body,
+        [string]$ContentType='application/json'
     )
-    
     $vstsInstance = Get-VstsInstance -Name $Instance
 
-    $auth = DecryptSecureString (ConvertTo-SecureString $vstsInstance.Authorization)
+    $auth = DecryptSecureString $($vstsInstance.Authorization)
 
-    $Parameters['api-version'] = $ApiVersion
+    $Parameters.Add('api-version', $ApiVersion)
     if($Parameters.Count -gt 0) {
         $Path += "?"
         $Path += ($Parameters.Keys | % { "$_=$($Parameters[$_])" }) -join "&"
@@ -22,7 +22,10 @@ function Invoke-VstsOperation {
     if($Method -eq "Get") {
         Invoke-RestMethod -Uri $uri -Method $Method -Headers @{ Authorization = $auth }
     } else {
-        Invoke-RestMethod -Uri $uri -Method $Method -Headers @{ Authorization = $auth } -ContentType "application/json" `
-            -Body ($Body | ConvertTo-Json -Depth 10 -Compress) 
+        if ($Method -eq "Patch") {
+            $ContentType = 'application/json-patch+json'
+        }
+        Invoke-RestMethod -Uri $uri -Method $Method -Headers @{ Authorization = $auth } -ContentType $ContentType `
+            -Body (ConvertTo-Json -InputObject $Body -Depth 10 -Compress) 
     }
 }

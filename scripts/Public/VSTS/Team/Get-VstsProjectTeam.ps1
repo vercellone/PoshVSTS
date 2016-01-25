@@ -9,7 +9,7 @@ function Get-VstsProjectTeam {
         [Alias("ProjectName")]
         [string]$Project,
 
-    [Alias("TeamName")]
+        [Alias("TeamName")]
         [Parameter(Position=2,ParameterSetName="Name")]
         [string]$Name = "*",
 
@@ -19,7 +19,6 @@ function Get-VstsProjectTeam {
 
         [int]$ChunkSize = 100
     )
-    
     $team = "*"
     switch($PSCmdlet.ParameterSetName) {
         Id {
@@ -29,7 +28,6 @@ function Get-VstsProjectTeam {
             $team = $Name
         }
     }
-    
     if(!$team.Contains("*")) {
         Invoke-VstsGetOperation -Instance $Instance -Path "_apis/projects/$Project/teams/$team" -ApiVersion "2.0-preview"
     } else {

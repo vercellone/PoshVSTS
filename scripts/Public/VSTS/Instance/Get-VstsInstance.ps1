@@ -15,8 +15,10 @@ function Get-VstsInstance {
         } else {
             foreach($BaseName in $Name) {
                 if (Test-Path "$path\$BaseName.xml" -ErrorAction SilentlyContinue) {
-                    Import-CliXml -Path "$path\$BaseName.xml"  |
-                        Add-Member -MemberType NoteProperty -Name Path -Value "$path\$BaseName.xml" -PassThru
+                    Import-CliXml -Path "$path\$BaseName.xml" | ForEach-Object {
+                        $_.Authorization = ConvertTo-SecureString -String $_.Authorization
+                        $_
+                    } | Add-Member -MemberType NoteProperty -Name Path -Value "$path\$BaseName.xml" -PassThru
                 }
             }
         }

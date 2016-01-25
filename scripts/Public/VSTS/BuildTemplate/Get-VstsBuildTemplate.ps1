@@ -4,6 +4,7 @@ function Get-VstsBuildTemplate {
         [Parameter(Position=0, Mandatory=$True)]
         [string]$Instance,
 
+        [Alias("BuildTemplateName")]
         [Alias("Name")]
         [Alias("TemplateName")]
         [Parameter(Mandatory=$True,Position=1,ParameterSetName="Instance",ValueFromPipeline=$True,ValueFromPipelineByPropertyName=$True)]
@@ -11,8 +12,8 @@ function Get-VstsBuildTemplate {
 
         [Alias("ProjectId")]
         [Alias("ProjectName")]
-    [Parameter(Mandatory=$true,Position=2,ValueFromPipelineByPropertyName=$true)]
-    [string]$Project,
+        [Parameter(Mandatory=$true,Position=2,ValueFromPipelineByPropertyName=$true)]
+        [string]$Project,
 
         [Parameter(ParameterSetName="Query")]
         [int]$ChunkSize = 10
